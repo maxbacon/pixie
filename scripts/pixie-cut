@@ -1,0 +1,2 @@
+#!/bin/sh
+java -cp $BACON_HOME/pixie-0.0.1-jar-with-dependencies.jar maxbacon.pixie.Pixie cut $*
