@@ -7,6 +7,8 @@ import maxbacon.pixie.assemble.Assemble;
 import maxbacon.pixie.assemble.AssembleArgs;
 import maxbacon.pixie.cut.Cut;
 import maxbacon.pixie.cut.CutArgs;
+import maxbacon.pixie.replace.Replace;
+import maxbacon.pixie.replace.ReplaceArgs;
 import maxbacon.pixie.resize.Resize;
 import maxbacon.pixie.resize.ResizeArgs;
 
@@ -32,6 +34,13 @@ public class Pixie {
          ResizeArgs resizeArgs = new ResizeArgs(argMap);
          if (!resizeArgs.hasErrors) {
             Resize.perform(resizeArgs);
+         }
+      }
+      
+      if (test(args, "replace", "--source <directoryIn> --dest <pathOut> --algo")) {
+         ReplaceArgs replaceArgs = new ReplaceArgs(argMap);
+         if (!replaceArgs.hasErrors) {
+            Replace.perform(replaceArgs);
          }
       }
    }

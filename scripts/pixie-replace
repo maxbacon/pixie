@@ -1,0 +1,2 @@
+#!/bin/sh
+java -cp $HOME/jars/pixie-0.0.1-jar-with-dependencies.jar maxbacon.pixie.Pixie replace $*

@@ -21,8 +21,10 @@ public class Cut {
             String _output = args.format;
             _output = _output.replaceAll(Pattern.quote("%x"), Integer.toString(x / args.width));
             _output = _output.replaceAll(Pattern.quote("%y"), Integer.toString(y / args.height));
+            System.out.println(_output);
             ImageIO.write(tile, args.imageFormat, new File(args.output, _output));
          }
+         System.out.println();
       }
    }
 }
