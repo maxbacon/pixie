@@ -7,6 +7,8 @@ import maxbacon.pixie.assemble.Assemble;
 import maxbacon.pixie.assemble.AssembleArgs;
 import maxbacon.pixie.cut.Cut;
 import maxbacon.pixie.cut.CutArgs;
+import maxbacon.pixie.resize.Resize;
+import maxbacon.pixie.resize.ResizeArgs;
 
 public class Pixie {
 
@@ -23,6 +25,13 @@ public class Pixie {
          AssembleArgs assembleArgs = new AssembleArgs(argMap);
          if (!assembleArgs.hasErrors) {
             Assemble.perform(assembleArgs);
+         }
+      }
+      
+      if (test(args, "resize", "--source <directoryIn> --dest <pathOut> --width <64> --height <64>")) {
+         ResizeArgs resizeArgs = new ResizeArgs(argMap);
+         if (!resizeArgs.hasErrors) {
+            Resize.perform(resizeArgs);
          }
       }
    }
