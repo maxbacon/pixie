@@ -1,7 +1,6 @@
 package maxbacon.pixie.hueshift;
 
 import java.awt.Color;
-import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
