@@ -7,6 +7,8 @@ import maxbacon.pixie.assemble.Assemble;
 import maxbacon.pixie.assemble.AssembleArgs;
 import maxbacon.pixie.cut.Cut;
 import maxbacon.pixie.cut.CutArgs;
+import maxbacon.pixie.hueshift.HueShift;
+import maxbacon.pixie.hueshift.HueShiftArgs;
 import maxbacon.pixie.replace.Replace;
 import maxbacon.pixie.replace.ReplaceArgs;
 import maxbacon.pixie.resize.Resize;
@@ -29,18 +31,25 @@ public class Pixie {
             Assemble.perform(assembleArgs);
          }
       }
-      
+
       if (test(args, "resize", "--source <directoryIn> --dest <pathOut> --width <64> --height <64>")) {
          ResizeArgs resizeArgs = new ResizeArgs(argMap);
          if (!resizeArgs.hasErrors) {
             Resize.perform(resizeArgs);
          }
       }
-      
+
       if (test(args, "replace", "--source <directoryIn> --dest <pathOut> --algo")) {
          ReplaceArgs replaceArgs = new ReplaceArgs(argMap);
          if (!replaceArgs.hasErrors) {
             Replace.perform(replaceArgs);
+         }
+      }
+      
+      if (test(args, "hueshift", "--file <input.png> --output <output.png> --shift <d>")) {
+         HueShiftArgs hueShiftArgs = new HueShiftArgs(argMap);
+         if (!hueShiftArgs.hasErrors) {
+            HueShift.perform(hueShiftArgs);
          }
       }
    }
