@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import maxbacon.pixie.Common;
+
 public class Replace {
    
    private static final Color CLEAR = new Color(255, 255, 255, 0); 
@@ -64,21 +66,7 @@ public class Replace {
                image2.setRGB(x, y, rgb);
             }
          }
-         ImageIO.write(image2, getFormat(input.getName()), new File(args.destination, input.getName()));
+         ImageIO.write(image2, Common.getFormat(input.getName()), new File(args.destination, input.getName()));
       }
-   }
-
-   private static String getFormat(String format) {
-      String ext = format.toLowerCase();
-      if (ext.endsWith(".png"))
-         return "png";
-      if (ext.endsWith(".jpg") || ext.endsWith(".jpeg"))
-         return "jpg";
-      return null;
-   }
-
-   public static void main(String[] args) {
-      parse("1234,1324=-1");
-      parse("1,5=234");
    }
 }

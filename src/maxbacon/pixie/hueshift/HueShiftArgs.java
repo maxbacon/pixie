@@ -3,6 +3,8 @@ package maxbacon.pixie.hueshift;
 import java.io.File;
 import java.util.Map;
 
+import maxbacon.pixie.Common;
+
 public class HueShiftArgs {
 
    public final boolean hasErrors;
@@ -42,7 +44,7 @@ public class HueShiftArgs {
             System.err.println("path specified by --output must not be a directory");
             _hasErrors = true;
          }
-         _imageFormat = getFormat(_tempFile);
+         _imageFormat = Common.getFormat(_tempFile);
          if (_imageFormat == null) {
             System.err.println(" output file specified by --output must end with .png or .jpg");
             _hasErrors = true;
@@ -68,14 +70,5 @@ public class HueShiftArgs {
       this.output = output;
       this.imageFormat = _imageFormat;
       this.hueShift = __hueShift;
-   }
-
-   private static String getFormat(String format) {
-      String ext = format.toLowerCase();
-      if (ext.endsWith(".png"))
-         return "png";
-      if (ext.endsWith(".jpg") || ext.endsWith(".jpeg"))
-         return "jpg";
-      return null;
    }
 }

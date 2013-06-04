@@ -7,12 +7,18 @@ import maxbacon.pixie.assemble.Assemble;
 import maxbacon.pixie.assemble.AssembleArgs;
 import maxbacon.pixie.cut.Cut;
 import maxbacon.pixie.cut.CutArgs;
+import maxbacon.pixie.growborder.GrowBorder;
+import maxbacon.pixie.growborder.GrowBorderArgs;
 import maxbacon.pixie.hueshift.HueShift;
 import maxbacon.pixie.hueshift.HueShiftArgs;
 import maxbacon.pixie.replace.Replace;
 import maxbacon.pixie.replace.ReplaceArgs;
 import maxbacon.pixie.resize.Resize;
 import maxbacon.pixie.resize.ResizeArgs;
+import maxbacon.pixie.shrinkborder.ShrinkBorder;
+import maxbacon.pixie.shrinkborder.ShrinkBorderArgs;
+import maxbacon.pixie.spritehunt.SpriteHunt;
+import maxbacon.pixie.spritehunt.SpriteHuntArgs;
 
 public class Pixie {
 
@@ -45,11 +51,31 @@ public class Pixie {
             Replace.perform(replaceArgs);
          }
       }
-      
+
       if (test(args, "hueshift", "--file <input.png> --output <output.png> --shift <d>")) {
          HueShiftArgs hueShiftArgs = new HueShiftArgs(argMap);
          if (!hueShiftArgs.hasErrors) {
             HueShift.perform(hueShiftArgs);
+         }
+      }
+
+      if (test(args, "spritehunt", "--input <input.png> [--hunt 255,0,255] --output <path> [--prefix <newfileprefix>]")) {
+         SpriteHuntArgs spriteHuntArgs = new SpriteHuntArgs(argMap);
+         if (!spriteHuntArgs.hasErrors) {
+            SpriteHunt.perform(spriteHuntArgs);
+         }
+      }
+
+      if (test(args, "shrinkborder", "--input <path> --output <path>")) {
+         ShrinkBorderArgs shrinkBorderArgs = new ShrinkBorderArgs(argMap);
+         if (!shrinkBorderArgs.hasErrors) {
+            ShrinkBorder.perform(shrinkBorderArgs);
+         }
+      }
+      if (test(args, "growborder", "--input <path> --output <path> --width <w> --height <h>")) {
+         GrowBorderArgs growBorderArgs = new GrowBorderArgs(argMap);
+         if (!growBorderArgs.hasErrors) {
+            GrowBorder.perform(growBorderArgs);
          }
       }
    }

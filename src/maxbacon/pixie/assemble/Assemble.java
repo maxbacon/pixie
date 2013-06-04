@@ -69,7 +69,7 @@ public class Assemble {
                targetImage.setRGB(blitState.x + u, blitState.y + v, image.getRGB(u, v));
             }
          }
-         System.out.println("#" + blitState.x + "," + blitState.y + "," + image.getWidth() + "," + image.getHeight() + "#" + filename);
+         System.out.println(blitState.x + "," + blitState.y + "," + image.getWidth() + "," + image.getHeight() + "=" + filename);
          adv(blitState);
       }
    }
@@ -124,7 +124,7 @@ public class Assemble {
          state.update();
       }
       state.resetPosition();
-      System.out.println("##signature:" + Hex.encodeHexString(state.signature.digest()));
+      System.out.println("#signature:" + Hex.encodeHexString(state.signature.digest()));
 
       // create the final image
       BufferedImage targetImage = new BufferedImage(state.w, state.h, BufferedImage.TYPE_INT_ARGB);

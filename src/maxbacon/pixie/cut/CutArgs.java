@@ -3,6 +3,8 @@ package maxbacon.pixie.cut;
 import java.io.File;
 import java.util.Map;
 
+import maxbacon.pixie.Common;
+
 /**
  * Validates that the arguments are valid
  * 
@@ -97,7 +99,7 @@ public class CutArgs {
             System.err.println(" format specified by --format is missing %y");
             _hasErrors = true;
          }
-         _imageFormat = getFormat(format);
+         _imageFormat = Common.getFormat(format);
          if (_imageFormat == null) {
             System.err.println(" format specified by --format must end with .png or .jpg");
             _hasErrors = true;
@@ -110,14 +112,5 @@ public class CutArgs {
       this.output = output;
       this.format = format;
       this.imageFormat = _imageFormat;
-   }
-
-   private static String getFormat(String format) {
-      String ext = format.toLowerCase();
-      if (ext.endsWith(".png"))
-         return "png";
-      if (ext.endsWith(".jpg") || ext.endsWith(".jpeg"))
-         return "jpg";
-      return null;
    }
 }
